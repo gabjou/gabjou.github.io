@@ -32,6 +32,7 @@ The province of Alberta (Canada) offers an open data service that provides a dat
 <figure>
   <img
   src="/assets/project_bepsia/figures/dataresults.png"
+  alt="Presentation of the dataset composed of staellite images and weather maps."
   >
   <em>Figure (2) - Presentation of the dataset composed of staellite images and weather maps.</em>
 </figure>
@@ -40,6 +41,7 @@ The weather map has been collected from the canadian meteorological office using
 <figure>
   <img
   src="/assets/project_bepsia/figures/datasummary.png"
+  alt="Key numbers of the dataset used for the 3 days blooming event prediction."
   >
   <em>Figure (3) - Key numbers of the dataset used for the 3 days blooming event prediction.</em>
 </figure>
@@ -58,6 +60,7 @@ The first architecture Double CNN described in the Figure (4) is inspired by the
 <figure>
   <img
   src="/assets/project_bepsia/figures/simpleCNN_fusionnate.PNG"
+  alt="Double CNN architecture."
   >
   <em>Figure (4) - Double CNN architecture.</em>
 </figure>
@@ -73,6 +76,7 @@ The next idea presented in the Figure (5) is to replace the convolutional neural
 <figure>
   <img
   src="/assets/project_bepsia/figures/AECNN_fusionnate.PNG"
+  alt="AE & CNN architecture."
   >
   <em>Figure (5) - AE & CNN architecture.</em>
 </figure>
@@ -100,6 +104,7 @@ With the application of the Cloud filter preprocess, the CNN Sat model shows the
 <figure>
   <img
   src="/assets/project_bepsia/figures/latentspace.png"
+  alt="2D representation of the latent spaces of the meteorological field sets of the training and validation datasets used by the CNN for predicting cyanobacterial blooms."
   >
   <em>Figure (6) - 2D representation of the latent spaces of the meteorological field sets of the training and validation datasets used by the CNN for predicting cyanobacterial blooms.</em>
 </figure>
@@ -108,6 +113,7 @@ However, overlearning of blooming cases is still present in this model. Figure (
 <figure>
   <img
   src="/assets/project_bepsia/figures/dataresults2.png"
+  alt="Comparison of the model's classification performances."
   >
   <em>Table (1) - Comparison of the model's classification performances.</em>
 </figure>

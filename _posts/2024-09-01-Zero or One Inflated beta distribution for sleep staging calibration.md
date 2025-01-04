@@ -181,6 +181,7 @@ def crps(y,c,alpha,a,b,intg=False):
 <figure>
   <img
   src="/assets/project_sleep_stage_calibration/figures/MLP_CSS.png"
+  alt="Double CNN architecture."
   >
   <em>Figure (2) - Double CNN architecture.</em>
 </figure>
@@ -253,6 +254,7 @@ def crps_loss(y_true, y_pred):
 <figure>
   <img
   src="/assets/project_sleep_stage_calibration/figures/fMLP_CC.png"
+  alt="Double CNN architecture."
   >
   <em>Figure (3) - Double CNN architecture.</em>
 </figure>

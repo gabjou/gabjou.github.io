@@ -62,6 +62,7 @@ Before concluding this blog, Figure (2) shows the resulting high-resolution SQG 
 <figure>
   <img
   src="/assets/article_ensemble_forecast_uq/figures/es_vs_spec.png"
+  alt="Initial state and high-resolution SQG observation with the spatial analysis of the estimated CRPS for the mu_spec ensemble forecast."
   >
   <em>Figure (2) - Initial state and high-resolution SQG observation with the spatial analysis of the estimated CRPS for the mu_spec ensemble forecast. Left figure represent the initial state of the system; middle figure is high-resolution SQG observation at t=9 days; and right figure is the CRPS estimated on the ensemble and observation at t=20 days for each spatial point and a chosen physical dimension.</em>
 </figure>
