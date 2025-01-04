@@ -301,6 +301,7 @@ A data set $X$ of n=1000 samples, M=10 interchangeable members, D=2 bivariate, w
 <figure>
   <img
   src="/assets/article_ensemble_forecast/figures/results.png"
+  alt="Comparison of generated clusters from the exchangeable ensemble and fitted clusters from GMM, DGMM and DEGMM. Squares represent cluster centres."
   >
   <em>Figure (2) - Comparison of generated clusters from the exchangeable ensemble and fitted clusters from GMM, DGMM and DEGMM. Squares represent cluster centres. Accuracy between the predicted cluster samples and the actual generated clusters is given in the title per model.</em>
 </figure>
@@ -311,6 +312,7 @@ This results was expected because DGMM and GMM are inferred on one member using 
 <figure>
   <img
   src="/assets/article_ensemble_forecast/figures/inference_degmm.gif"
+  alt="Representation of the DEGMM assignement during the iterative inference process."
   >
   <em>Figure (3) - Representation of the DEGMM assignement during the iterative inference process.</em>
 </figure>
