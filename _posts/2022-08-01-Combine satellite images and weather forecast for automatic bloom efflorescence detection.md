@@ -4,7 +4,7 @@ date: 2022-08-01 00:00:00 +0000
 categories: [projects]
 tags: [weather forecast,bloom prediction,Auto-Encoder,Convolutionnal Neural Network]
 image: 
-    path: /assets/project_bepsia/figures/simpleCNN_cropped.png
+    path: '/assets/project_bepsia/figures/simpleCNN_cropped.png'
     alt: Figure (1) - State of the art convolutionnal neural network architecture for automatic bloom efflorescence prediction with satellite images.
 ---
 

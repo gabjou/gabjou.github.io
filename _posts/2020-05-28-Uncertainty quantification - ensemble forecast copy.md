@@ -4,7 +4,7 @@ date: 2020-05-28 02:30:00 +0000
 categories: [articles]
 tags: [collaboration, ensemble forecast, fluid dynamics]
 image: 
-    path: /assets/article_ensemble_forecast_uq/figures/rescale_es.png
+    path: '/assets/article_ensemble_forecast_uq/figures/rescale_es.png'
     alt: Figure (1) - Energy score (ES) of the temporal structure of the SQG turbulence flow ensemble forecast.
 ---
 

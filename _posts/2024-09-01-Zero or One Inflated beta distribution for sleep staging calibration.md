@@ -4,7 +4,7 @@ date: 2024-09-01 00:00:00 +0000
 categories: [projects]
 tags: [ensemble modeling,sleep staging porbability,zero or one inflated beta distribution,calibration,Multi-Layer perceptron]
 image: 
-    path: /assets/project_sleep_stage_calibration/figures/MLP_CS.png
+    path: '/assets/project_sleep_stage_calibration/figures/MLP_CS.png'
     alt: Figure (1) - Multi-Layer Perceptron head architecture performing a Zero or One Inflated beta calibration
 ---
 ---
