@@ -18,7 +18,7 @@ Presentation of a deep learning extension proposed for the exchangeable Gaussian
 ---
 ## Abstract
 <div style="text-align: justify">
-Nowadays, most weather forecasting centers produce ensemble forecasts.  Ensemble forecasts provide information about probability distribution of the weather variables. Weather forecast system being sensitive to the initial state of the atmosphere, the ensemble forecast are subjects to heavy divergences in times with the true state of the atmosphere leading to different distributions errors. One way to isolate those distributions errors is to apply a clustering algorithm. The Gaussian mixture model represent the goal standard clusteing algorithm with Gaussian assumption on th data. Nevertheless, the ensemble forecast present the interesting aspect of exchangeability making its members none affected by their rank. Each member gives the same statistical description of the general ensemble distribution. The GMM main frame is not adapted to infer the ensemble but only member by member. In this blog, we will present the general framework of the Gaussian mixture model and we will introduce the novel exchangeable gaussian mixture model developped to fit an ensemble of exchangeable gaussian random vector.
+Nowadays, most weather forecast centres produce ensemble forecasts.  Ensemble forecasts provide information on the probability distribution of weather variables. Since the weather forecasting system is sensitive to the initial state of the atmosphere, the ensemble forecasts are subject to large temporal deviations from the true state of the atmosphere, leading to different distribution errors. One way to isolate these distribution errors is to apply a clustering algorithm. The Gaussian mixture model represents the target standard clustering algorithm with a Gaussian assumption on the data. Nevertheless, the ensemble prediction presents the interesting aspect of interchangeability, so that its members are not affected by their rank. Each member gives the same statistical description of the general ensemble distribution. The main GMM framework is not adapted to infer the ensemble, but only member by member. In this blog we will present the general framework of the Gaussian Mixture Model and introduce the novel Exchangeable Gaussian Mixture Model developed to fit an ensemble of exchangeable Gaussian random vectors.
 </div>
 ---
 
@@ -44,7 +44,7 @@ Given a sample $\{x_1, \cdots, x_n\}$ of $n$ independent realizations of the ran
 \label{eq:loglik}
 \end{equation}
 \]
-Most of coding language disposes of an implemenation of the Gaussian distribution pdf $\varphi$ taking as parameters $\mu$ and $\Sigma$. In this blog, we have chosen the jax version of the Gaussian pdf to implement the equations $\ref{eq3.1.1.1}$ and $\ref{eq:loglik}$:
+Most programming languages have an implementation of the Gaussian distribution pdf $\varphi$ which takes $\mu$ and $\Sigma$ as parameters. In this blog, we have chosen the jax version of the Gaussian pdf to implement the equations $\ref{eq3.1.1.1}$ and $\ref{eq:loglik}$:
 
 </div>
 
@@ -74,7 +74,7 @@ def log_likelihood_gmm(X, pi, mu, Sigma):
 ```
 <div style="text-align: justify">
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-The parameters estimation of the GMM cannot be derived from the resolution of the loglikelihood $\ref{eq:loglik}$ maximisation problem. Instead, the iterative algorithm Expectation-Maximization (EM) is traditionnaly used. EM  algorithm  alternates two steps, E-step and M-step. At iteration $[h]$ of the EM algorithm, the E-step computes the cluster member-ship posterior probabilities $\gamma^{[h]}_{ik}$ for all individuals $i= 1,...,n$,  given the current parameters values $\Psi^{[h-1]}$. The posterior probabilities are computed thanks to
+GMM parameter estimation cannot be derived from solving the loglikelihood $\ref{eq:loglik}$ maximisation problem. Instead, the iterative Expectation-Maximisation (EM) algorithm is traditionally used. The EM algorithm alternates between two steps, the E-step and the M-step. At iteration $[h]$ of the EM algorithm, the E-step computes the posterior probabilities of cluster membership $\gamma^{[h]}_{ik}$ for all individuals $i= 1,...,n$, given the current parameter values $\Psi^{[h-1]}$. The posterior probabilities are computed using
 \[
 \begin{equation}
 \gamma^{[h]}_{ik}  =  \mathbb{P}(Z=k|x_i,\Psi^{[h-1]}) 
@@ -172,7 +172,7 @@ def m_step(self, X, gamma):
 ## Exchangeable Gaussian mixture model
 <div style="text-align: justify">
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-In meteorological applications, numerical weather prediction models provide ensembles instead of regular samples. More precisely,  each observation $i$ is a set of $M$ realizations  ${x_{i1},\cdots, x_{iM}}$ of the variable $X$. These realizations are called {\it members}. The members are considered as realizations of a vector of exchangeable variables $\{X_1, \cdots,X_M\}$. The exchangeability of the random vector induces the joint distribution of $\{X_1, \cdots,X_M\}$ is invariant under variable permutations. This can be translated as each member $X_m$ carries the same statistical information describing the joint distribution. The GMM is initially designed to infer only one member of $\{X_1, \cdots,X_M\}$ missing information carried out by the $M-1$ remaining members. We proposes to leverage this issue with a new pdf built for the $\{X_1, \cdots,X_M\}$. However, this novel pdf is designed with each member $X_m$ is assumed to be independent to $X_\ell$ if $m \neq \ell$, and exchangeable. The GMM  is then applied to $(Z,X_1,\cdots,X_M)$, where $Z$ is a discrete latent variable. The joint pdf of $(X_1,\cdots,X_M)$ is given by 
+In meteorological applications, numerical weather prediction models provide ensembles instead of regular samples. More precisely, each observation $i$ is a set of $M$ realisations ${x_{i1},\cdots, x_{iM}}$ of the variable $X$. These realisations are called {\it-members}. The members are considered as realisations of a vector of exchangeable variables $\{X_1, \cdots,X_M\}$. The exchangeability of the random vector induces that the joint distribution of $\{X_1, \cdots,X_M\}$ is invariant under variable permutations. This can be translated as each member $X_m$ carries the same statistical information describing the joint distribution. The GMM is initially designed to infer only one member of $\{X_1, \cdots,X_M\}$ missing information carried by the remaining $M-1$ members. We propose to exploit this problem with a new pdf constructed for the $\{X_1, \cdots,X_M\}$. However, this new pdf is designed with each member $X_m$ assumed to be independent of $X_\ell$ if $m \neq \ell$, and interchangeable. The GMM is then applied to $(Z,X_1,\cdots,X_M)$, where $Z$ is a discrete latent variable. The joint pdf of $(X_1,\cdots,X_M)$ is given by 
 \begin{equation}
 f_{X_1,...,X_M}(x_1,...,x_M;\Psi) =  \sum^K_{k=1}\pi_k\prod^M_{m=1}\varphi(x_m;\mu_k,\Sigma_k)
 \label{eq:jpdf_ens}
@@ -236,7 +236,7 @@ def m_step_egmm(self, X, gamma):
 ```
 <div style="text-align: justify">
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-In model (\ref{eq:jpdf_ens}), the members are assumed to be independent to each other. Remind that, in practice, the ensembles are obtained by independent perturbations of the initial conditions and parameters when running the numerical weather prediction model. But, the physical model clearly induces some dependence between the members. The independence properties could be relaxed in model (\ref{eq:jpdf_ens}). For each $k$, the product  $\prod^M_{m=1}\varphi(x_m;\mu_k,\Sigma_k)$ would be replaced by a multivariate Gaussian pdf with mean $\mu_k \mathbf{e}_M$,  where $\mathbf{e}_M$ is a vector of $1$s. The covariance could be a block matrix with $\Sigma_k$ matrices on the diagonal and an extra diagonal matrix repeated on the other blocs. This improvement is beyond the scope of this blog. 
+In the model (\ref{eq:jpdf_ens}), the members are assumed to be independent of each other. Remember that in practice the ensembles are obtained by independent perturbations of the initial conditions and parameters when running the numerical weather prediction model. However, the physical model clearly induces some dependence between members. The independence properties could be relaxed in the model (\ref{eq:jpdf_ens}). For each $k$, the product $\prod^M_{m=1}\varphi(x_m;\mu_k,\Sigma_k)$ would be replaced by a multivariate Gaussian pdf with mean $\mu_k \mathbf{e}_M$, where $\mathbf{e}_M$ is a vector of $1$s. The covariance could be a block matrix with $\Sigma_k$ matrices on the diagonal and an extra diagonal matrix repeated on the other blocks. This improvement is beyond the scope of this blog. 
 </div>
 ---
 
@@ -244,7 +244,7 @@ In model (\ref{eq:jpdf_ens}), the members are assumed to be independent to each 
 # Deep Exchangeable Gaussian mixture model
 <div style="text-align: justify">
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-The work of <a href="https://openreview.net/forum?id=BJJLHbb0-">Deep Autoencoding Gaussian Mixture Model for Unsupervised Anomaly Detection</a>, propose to explore a clustering algorithm, in which a GMM includes a novel multi-layer perceptron (MLP) inference instead of the EM algorithm. In this blog, we propose a similar exploration to infer GMM (DGMM) and exchangeable GMM (DEGMM). The DEGMM and DGMM follow the same iterative approach where a MLP is trained to assign each sample to a cluster by predicting $\gamma^{[h]}$ at each epoch. Using the predicted $\gamma^{[h]}$, the M-step update the model parameter to calculate the cureent value of the loglikelihood taken as objective function. The MLP step replaces the E-step of the EM algorithm.
+The work of <a href="https://openreview.net/forum?id=BJJLHbb0-">Deep Autoencoding Gaussian Mixture Model for Unsupervised Anomaly Detection</a>, proposes to explore a clustering algorithm in which a GMM includes a novel multi-layer perceptron (MLP) inference instead of the EM algorithm. In this blog, we propose a similar exploration to infer a GMM (DGMM) and a replaceable GMM (DEGMM). The DEGMM and DGMM follow the same iterative approach where an MLP is trained to assign each sample to a cluster by predicting $\gamma^{[h]}$ at each epoch. Using the predicted $\gamma^{[h]}$, the M-step updates the model parameter to compute the current value of the loglikelihood taken as the objective function. The MLP step replaces the E step of the EM algorithm.
 </div>
 Here is an example of the loss and fit functions of the DEGMM python class:
 
@@ -296,13 +296,13 @@ Here is an example of the loss and fit functions of the DEGMM python class:
 ## Results
 <div style="text-align: justify">
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-A dataset $X$ of n=1000 samples, M=10 exchangeable members, D=2 bivariate, has been generated using $K=3$ Gaussian components. This dataset is used to determine the difference between the inference of GMM, DGMM trained on one randomly selected member and DEGMM infering the whole ensemble. The Figure (2) offers a comparison of clutsering performance per model. The accuracy, measuring the correctness of the cluster assignement between the true and the predicted samples, is estimated per model and shown in the figure title's. The accuracy of the DEGMM shows the best performance with 98% of correctness with the true samples, contrasting with DGMM and GMM performances. 
+A data set $X$ of n=1000 samples, M=10 interchangeable members, D=2 bivariate, was generated using $K=3$ Gaussian components. This dataset is used to determine the difference between the inference of the GMM, the DGMM trained on a randomly selected member, and the DEGMM inferring the entire ensemble. Figure (2) provides a comparison of the performance of each model. The accuracy, which measures the correctness of cluster assignment between the true and predicted samples, is estimated per model and shown in the title of the figure. The accuracy of DEGMM shows the best performance with 98% correctness with the true samples, in contrast to the performance of DGMM and GMM. 
 
 <figure>
   <img
   src="/assets/article_ensemble_forecast/figures/results.png"
   >
-  <em>Figure (2) - Comparison of generated cluster of exchangeable ensemble and fitted clusters from GMM, DGMM and DEGMM. Squares represents clusters centers. Accuracy between the predicted cluster samples and the true generated is set in title per model.</em>
+  <em>Figure (2) - Comparison of generated clusters from the exchangeable ensemble and fitted clusters from GMM, DGMM and DEGMM. Squares represent cluster centres. Accuracy between the predicted cluster samples and the actual generated clusters is given in the title per model.</em>
 </figure>
 
 This results was expected because DGMM and GMM are inferred on one member using only 1/10 information from the dataset. In the paper <a href="https://www.researchgate.net/profile/Goulven-Monnier/publication/358989436_Gaussian_mixture_models_for_clustering_and_calibration_of_ensemble_weather_forecasts/links/638789c0bbdef30dc9877e90/Gaussian-mixture-models-for-clustering-and-calibration-of-ensemble-weather-forecasts.pdf">Gaussian mixture models for clustering and calibration of ensemble weather forecasts</a>, other extensions of the GMM are explored to fit correctly datasets composed of exchangeable datasets. However, those models are only implemented with R language <a href="https://gitlab.com/gabrijou/gaussianmixturemodels.git"></a>.
