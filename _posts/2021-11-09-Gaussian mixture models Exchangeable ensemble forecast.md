@@ -1,8 +1,8 @@
 ---
-title: Gaussian mixture models for Exchangeable ensemble forecast with jax implementation
+title: Gaussian mixture models for Exchangeable ensemble forecast including deep learning and jax implementation
 date: 2021-11-09 00:00:00 +0000
 categories: [articles]
-tags: [ensemble forecast, Gaussian mixture model, exchangeability,python,jax,flax]
+tags: [ensemble forecast, Gaussian mixture model, exchangeability, Multi-Layer Perceptron,python,jax,flax]
 image: 
     path: '/assets/article_ensemble_forecast/figures/example.png'
     alt: Figure (1) - Clustering example of a bivariate exchangeable ensemble dataset clustered by an Exchangeable gaussian mixture model with three distributions.

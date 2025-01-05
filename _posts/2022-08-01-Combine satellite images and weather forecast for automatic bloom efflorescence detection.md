@@ -1,11 +1,11 @@
 ---
-title: Combine satellite images and weather forecast for automatic bloom efflorescence prediction 
+title: Combine convolutional neural network, satellite imagery and weather forecast for automated blooming risk prediction 
 date: 2022-08-01 00:00:00 +0000
 categories: [projects]
-tags: [weather forecast,bloom prediction,Auto-Encoder,Convolutionnal Neural Network]
+tags: [weather forecast,bloom prediction,Auto-Encoder,Convolutional Neural Network]
 image: 
     path: '/assets/project_bepsia/figures/simpleCNN_cropped.png'
-    alt: Figure (1) - State of the art convolutionnal neural network architecture for automatic bloom efflorescence prediction with satellite images.
+    alt: Figure (1) - State of the art Convolutional Neural Network architecture for automatic bloom efflorescence prediction with satellite images.
 ---
 
 ---
@@ -53,7 +53,7 @@ In the Figure (3), the element named "Cloud filter" refers to a preprocessing te
 
 ---
 ## Neural Network architectures
-In this project, two main neural network architecture has been explored to predict 3 days blooming event with satellite images and forecated weather maps: Late fusion convolutionnal neural network (Double CNN) and auto-encoder convolutionnal neural network (AE & CNN).
+In this project, two main neural network architecture has been explored to predict 3 days blooming event with satellite images and forecated weather maps: Late fusion convolutional neural network (Double CNN) and auto-encoder convolutional neural network (AE & CNN).
 ### Double CNN
 <div style="text-align: justify">
 The first architecture Double CNN described in the Figure (4) is inspired by the duplication of convolutional layers and applied independently to each dataset source. Then, the results of the last dense layers would be concatenated performing a late fusion of the information before delivering the final prediction. The advantage of this method is that it required less parameters than a 3D convolution and it cans focus on spatial caracteristic from each source before merging the results. The disadvantage of this architecture is that we learn the weights associated with the meteorological fields according to the cyanobacteria bloom prediction problem. The spatial domain is relatively large for a local phenomenon with little training data, which could lead to over-learning.
