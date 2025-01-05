@@ -1,5 +1,14 @@
 # The Site Configuration
 
+plugins:
+  - jekyll-analytics
+
+jekyll_analytics:
+  GoogleAnalytics:          # Add, if you want to track with Google Analytics
+    id: 10115747397          # Required - replace with your tracking id
+    anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking
+
+
 # Import the theme
 theme: jekyll-theme-chirpy
 
@@ -232,13 +241,6 @@ jekyll-archives:
     tag: /tags/:name/
     category: /categories/:name/
 
-plugins:
-  - jekyll-analytics
-
-jekyll_analytics:
-  GoogleAnalytics:          # Add, if you want to track with Google Analytics
-    id: 10115747397          # Required - replace with your tracking id
-    anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking
 
 
 
