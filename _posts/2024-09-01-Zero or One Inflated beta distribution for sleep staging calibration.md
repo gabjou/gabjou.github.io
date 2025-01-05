@@ -270,7 +270,7 @@ The
 </div>
 
 ### CRPS keras ops implementation
-
+#### TO DO
 ```python
 import tensorflow_probability as tfp
 import numpy as np
@@ -324,12 +324,13 @@ def crps_loss(y_true, y_pred):
 ```
 
 ### Sleep staging probability estimation from Zero or One inflated beta
+#### TO DO
 <div style="text-align: justify">
 
 </div>
 
 ### Global
-
+#### TO DO
 <div style="text-align: justify">
 
 <figure>
@@ -345,7 +346,7 @@ def crps_loss(y_true, y_pred):
 
 ---
 ## Results
-
+### TO DO
 <div style="text-align: justify">
 <!-- 
 <figure>
